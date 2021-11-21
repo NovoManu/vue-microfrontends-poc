@@ -13,7 +13,7 @@ const devConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'profile',
+      name: 'orchestrator',
       remotes: {
         auth: 'auth@http://localhost:8081/remoteEntry.js',
         marketplace: 'marketplace@http://localhost:8082/remoteEntry.js',
