@@ -7,7 +7,7 @@ export const mount = (el) => {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_profile-root')
+  const devRoot = document.querySelector('#_auth-root')
 
   if (devRoot) {
     mount(devRoot)
