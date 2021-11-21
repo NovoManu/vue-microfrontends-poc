@@ -4,8 +4,8 @@
       <button class="button" @click="$router.push('login')">Logout</button>
     </header>
     <div class="sidebar">
-      <a class="sidebar-item">P</a>
-      <a class="sidebar-item">M</a>
+      <router-link to="/marketplace" class="sidebar-item">M</router-link>
+      <router-link to="profile" class="sidebar-item">P</router-link>
     </div>
     <div class="content">
       <slot />
@@ -86,5 +86,10 @@ export default {
 .content {
   width: 100%;
   padding: 1rem 0 0 4rem;
+}
+.router-link-active {
+  background-color: #e3e9ef;
+  color:  #ff8300;
+  border-color:  #ff8300;
 }
 </style>
