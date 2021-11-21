@@ -15,6 +15,7 @@ const devConfig = {
     new ModuleFederationPlugin({
       name: 'profile',
       remotes: {
+        marketplace: 'marketplace@http://localhost:8082/remoteEntry.js',
         profile: 'profile@http://localhost:8083/remoteEntry.js'
       }
     }),

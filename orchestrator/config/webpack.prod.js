@@ -10,7 +10,7 @@ const prodConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'profile',
+      name: 'orchestrator',
       remotes: {},
     }),
   ],

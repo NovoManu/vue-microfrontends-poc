@@ -2,6 +2,7 @@
   <div>
     Orchestrator
     <div id="profile"></div>
+    <div id="marketplace"></div>
   </div>
 </template>
 
