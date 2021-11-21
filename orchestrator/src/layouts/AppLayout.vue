@@ -1,15 +1,33 @@
 <template>
-  <div>AppLayout</div>
+  <component :is="layout">
+    <slot />
+  </component>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'AppLayout'
-})
+<script>
+import AppLayoutDefault from './AppLayoutDefault'
+import { shallowRef, watch } from 'vue'
+import { useRoute } from 'vue-router'
+export default {
+  name: 'AppLayout',
+  setup () {
+    const layout = shallowRef(AppLayoutDefault)
+    const route = useRoute()
+    watch(
+        () => route.meta,
+        async meta => {
+          try {
+            console.log(meta.layout)
+            const component = await import(`./${meta.layout}.vue`)
+            console.log(component)
+            layout.value = component?.default || AppLayoutDefault
+          } catch (e) {
+            console.log(e)
+            layout.value = AppLayoutDefault
+          }
+        },
+    )
+    return { layout }
+  }
+}
 </script>
-
-<style lang='scss' scoped>
-
-</style>

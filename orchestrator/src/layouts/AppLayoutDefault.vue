@@ -1,5 +1,5 @@
 <template>
-  <div>AppLayoutDefault</div>
+  <slot />
 </template>
 
 <script lang="ts">
@@ -9,7 +9,3 @@ export default defineComponent({
   name: 'AppLayoutDefault'
 })
 </script>
-
-<style lang='scss' scoped>
-
-</style>

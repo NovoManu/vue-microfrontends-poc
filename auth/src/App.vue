@@ -117,6 +117,7 @@ export default defineComponent({
   border-radius: 4px;
   border: 1px solid #ff8300;
   background-color: #ff8300;
+  font-size: 1.2rem;
   color: #fff;
   text-transform: none;
 }

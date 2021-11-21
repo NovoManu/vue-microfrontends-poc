@@ -12,17 +12,26 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: Auth
+    component: Auth,
+    meta: {
+      layout: 'AppLayoutDefault'
+    }
   },
   {
     path: '/marketplace',
     name: 'marketplace',
-    component: Marketplace
+    component: Marketplace,
+    meta: {
+      layout: 'AppLayoutHome'
+    }
   },
   {
     path: '/profile',
     name: 'profile',
-    component: Profile
+    component: Profile,
+    meta: {
+      layout: 'AppLayoutHome'
+    }
   },
 ]
 
