@@ -2,7 +2,7 @@
   "name": "orchestrator",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack serve --config config/webpack.dev.js",
+    "start": "webpack serve --config config/webpack.dev.js --history-api-fallback",
     "build": "webpack --config config/webpack.prod.js"
   },
   "dependencies": {
@@ -10,7 +10,8 @@
     "primeflex": "^2.0.0",
     "primeicons": "^4.0.0",
     "primevue": "^3.0.1",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
