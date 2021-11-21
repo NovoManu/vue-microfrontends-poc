@@ -1,12 +1,12 @@
 <template>
-  <div>Profile</div>
+  <div>Marketplace</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'ProfileApp'
+  name: 'MarketplaceApp'
 })
 </script>
 

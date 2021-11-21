@@ -7,7 +7,7 @@ export const mount = (el) => {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  const el = document.querySelector('#_profile-root')
+  const el = document.querySelector('#_marketplace-root')
 
   if (el) {
     mount(el)
