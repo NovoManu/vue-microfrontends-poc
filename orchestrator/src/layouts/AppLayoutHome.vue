@@ -1,7 +1,7 @@
 <template>
   <div class="main-page">
     <header class="header">
-      <button class="button" @click="$router.push('login')">Logout</button>
+      <button class="button" @click="$emit('logout')">Logout</button>
     </header>
     <div class="sidebar">
       <router-link to="/marketplace" class="sidebar-item">M</router-link>

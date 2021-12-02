@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App'
 import { webHistoryRouter, memoryHistoryRouter } from './router'
+import { logout } from '../services/api'
 
 export const mount = (el, { onLogin, defaultRouter, syncParentRouter }) => {
   const props = {
@@ -15,6 +16,9 @@ export const mount = (el, { onLogin, defaultRouter, syncParentRouter }) => {
   return {
     syncChildRouter(route) {
       void router.push(route)
+    },
+    async onLogout() {
+      await logout()
     }
   }
 }

@@ -11,14 +11,14 @@
       <div class="login-form">
         <div class="input-field">
           <label class="input-label">Email</label>
-          <input class="input" type="email" placeholder="Enter email address"/>
+          <input v-model="email" class="input" type="email" placeholder="Enter email address"/>
         </div>
         <div class="input-field">
           <label class="input-label">Password</label>
-          <input class="input" type="password" placeholder="Enter password"/>
+          <input v-model="password" class="input" type="password" placeholder="Enter password"/>
         </div>
         <div class="login-button">
-          <button type="submit" class="button" @click="onLogin">Log me in</button>
+          <button type="submit" class="button" @click="onSubmit">Log me in</button>
         </div>
         <span>Don't have an account? <router-link to="signup">Signup</router-link></span>
       </div>
@@ -28,6 +28,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { login } from '../../services/api'
 
 export default defineComponent({
   name: 'Login',
@@ -36,6 +37,25 @@ export default defineComponent({
       type: Function,
       required: true,
       default: () => ({}),
+    }
+  },
+  data() {
+    return {
+      email: null,
+      password: null
+    }
+  },
+  methods: {
+    async onSubmit() {
+      try {
+        const key = await login({
+          email: this.email,
+          password: this.password,
+        })
+        this.onLogin(key)
+      } catch {
+        console.log('login failed')
+      }
     }
   }
 })

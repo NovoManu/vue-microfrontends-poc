@@ -5,6 +5,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { mount } from 'auth/AuthApp'
+import { setToken } from '../services/localStorageManager'
 
 export default defineComponent({
   name: 'Auth',
@@ -14,14 +15,15 @@ export default defineComponent({
     }
   },
   mounted() {
-    const onLogin = () => {
-      console.log('login')
+    const onLogin = (key) => {
+      if (key) setToken(key)
+      this.$router.push('/')
     }
     const syncParentRouter = (route) => {
       this.$router.push(route)
     }
     try {
-      const { syncChildRouter } = mount(`#${this.id}`, { onLogin, syncParentRouter })
+      const { syncChildRouter, onLogout } = mount(`#${this.id}`, { onLogin, syncParentRouter })
       this.$watch(
           '$route',
           (to) => {
@@ -31,6 +33,7 @@ export default defineComponent({
             immediate: true
           }
       )
+      this.$emit('onLogout', onLogout)
     } catch (e) {
       console.log(e)
     }

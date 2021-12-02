@@ -1,5 +1,5 @@
 <template>
-  <component :is="layout">
+  <component :is="layout" @logout="$emit('logout')">
     <slot />
   </component>
 </template>
