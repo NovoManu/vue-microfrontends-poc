@@ -17,10 +17,14 @@
           <label class="input-label">Password</label>
           <input class="input" type="password" placeholder="Enter password"/>
         </div>
-        <div class="login-button">
-          <button type="submit" class="button" @click="onLogin">Log me in</button>
+        <div class="input-field">
+          <label class="input-label">Confirm Password</label>
+          <input class="input" type="password" placeholder="Confirm password"/>
         </div>
-        <span>Don't have an account? <router-link to="signup">Signup</router-link></span>
+        <div class="login-button">
+          <button type="submit" class="button" @click="onLogin">Signup</button>
+        </div>
+        <span>Already have an account? <router-link to="login">Login</router-link></span>
       </div>
     </div>
   </div>
@@ -30,7 +34,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Login',
+  name: 'Signup',
   props: {
     onLogin: {
       type: Function,

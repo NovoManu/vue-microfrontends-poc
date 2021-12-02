@@ -17,8 +17,11 @@ export default defineComponent({
     const onLogin = () => {
       console.log('login')
     }
+    const syncParentRouter = (route) => {
+      this.$router.push(route)
+    }
     try {
-      mount(`#${this.id}`, { onLogin })
+      mount(`#${this.id}`, { onLogin, syncParentRouter })
     } catch (e) {
       console.log(e)
     }

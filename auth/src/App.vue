@@ -12,6 +12,16 @@ export default defineComponent({
       type: Function,
       required: true,
       default: () => ({}),
+    },
+    syncParentRouter: {
+      type: Function,
+      required: true,
+      default: () => ({}),
+    }
+  },
+  watch: {
+    $route (to) {
+      this.syncParentRouter(to.path)
     }
   }
 })

@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Auth from './views/Auth'
-import Marketplace from './views/Marketplace'
-import Profile from './views/Profile'
 
 const routes = [
   {
@@ -12,7 +9,15 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: Auth,
+    component: () => import('./views/Auth'),
+    meta: {
+      layout: 'AppLayoutDefault'
+    }
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: () => import('./views/Auth'),
     meta: {
       layout: 'AppLayoutDefault'
     }
@@ -20,7 +25,7 @@ const routes = [
   {
     path: '/marketplace',
     name: 'marketplace',
-    component: Marketplace,
+    component: () => import('./views/Marketplace'),
     meta: {
       layout: 'AppLayoutHome'
     }
@@ -28,7 +33,7 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    component: Profile,
+    component: () => import('./views/Profile'),
     meta: {
       layout: 'AppLayoutHome'
     }
