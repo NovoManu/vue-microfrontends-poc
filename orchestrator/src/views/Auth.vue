@@ -1,5 +1,5 @@
 <template>
-  <div :id="id"></div>
+  <div :id="id" />
 </template>
 
 <script lang="ts">
@@ -14,8 +14,11 @@ export default defineComponent({
     }
   },
   mounted() {
+    const onLogin = () => {
+      console.log('login')
+    }
     try {
-      mount(`#${this.id}`)
+      mount(`#${this.id}`, { onLogin })
     } catch (e) {
       console.log(e)
     }
