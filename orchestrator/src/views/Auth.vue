@@ -21,11 +21,20 @@ export default defineComponent({
       this.$router.push(route)
     }
     try {
-      mount(`#${this.id}`, { onLogin, syncParentRouter })
+      const { syncChildRouter } = mount(`#${this.id}`, { onLogin, syncParentRouter })
+      this.$watch(
+          '$route',
+          (to) => {
+            syncChildRouter(to.path)
+          },
+          {
+            immediate: true
+          }
+      )
     } catch (e) {
       console.log(e)
     }
-  }
+  },
 })
 </script>
 

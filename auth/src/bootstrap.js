@@ -7,12 +7,15 @@ export const mount = (el, { onLogin, defaultRouter, syncParentRouter }) => {
     onLogin,
     syncParentRouter
   }
+  const router = defaultRouter || memoryHistoryRouter
   const app = createApp(App, props)
-  app.use(defaultRouter || memoryHistoryRouter)
+  app.use(router)
   app.mount(el)
 
   return {
-    onParentNavigate() {}
+    syncChildRouter(route) {
+      void router.push(route)
+    }
   }
 }
 
