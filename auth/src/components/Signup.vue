@@ -1,6 +1,11 @@
 <template>
   <div class="login-page">
-    <div class="split left-side image-container">
+    <div class="split left-side image-container" :style="test">
+      <img
+          alt="login-background"
+          src="../assets/img/login-background-image.png"
+          class="login-background"
+      >
       <img
           alt="login-image"
           src="../assets/img/login-logo.svg"
@@ -22,7 +27,7 @@
           <input class="input" type="password" placeholder="Confirm password"/>
         </div>
         <div class="login-button">
-          <button type="submit" class="button" @click="onLogin">Signup</button>
+          <button type="submit" class="button">Signup</button>
         </div>
         <span>Already have an account? <router-link to="login">Login</router-link></span>
       </div>
@@ -35,13 +40,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Signup',
-  props: {
-    onLogin: {
-      type: Function,
-      required: true,
-      default: () => ({}),
-    }
-  }
 })
 </script>
 
@@ -68,18 +66,20 @@ export default defineComponent({
 .left-side {
   left: 0;
 }
-.image-container {
-  overflow-y: hidden;
-  padding-top: 0;
-  background-image: url(../assets/img/login-background-image.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+.login-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 .login-logo {
   padding: 2rem;
+  position: relative;
+  z-index: 2;
 }
 .right-side {
   right: 0;
+  background-color: white;
 }
 .form-container {
   display: flex;
