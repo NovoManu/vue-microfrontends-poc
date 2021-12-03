@@ -1,4 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { getToken } from './services/localStorageManager'
+
+const middlewares = {
+  auth(to, from, next) {
+    if (!getToken()) {
+      next('/login')
+    }
+    next()
+  },
+  redirectToHome(to, from, next) {
+    if (getToken()) {
+      next('/')
+    }
+    next()
+  }
+}
 
 const routes = [
   {
@@ -10,6 +26,7 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('./views/Auth'),
+    beforeEnter: middlewares.redirectToHome,
     meta: {
       layout: 'AppLayoutDefault'
     }
@@ -18,6 +35,7 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: () => import('./views/Auth'),
+    beforeEnter: middlewares.redirectToHome,
     meta: {
       layout: 'AppLayoutDefault'
     }
@@ -26,6 +44,7 @@ const routes = [
     path: '/marketplace',
     name: 'marketplace',
     component: () => import('./views/Marketplace'),
+    beforeEnter: middlewares.auth,
     meta: {
       layout: 'AppLayoutHome'
     }
@@ -34,6 +53,7 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import('./views/Profile'),
+    beforeEnter: middlewares.auth,
     meta: {
       layout: 'AppLayoutHome'
     }
