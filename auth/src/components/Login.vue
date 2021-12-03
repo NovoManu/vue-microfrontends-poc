@@ -1,6 +1,6 @@
 <template>
   <div class="login-page">
-    <div class="split left-side image-container">
+    <div class="split left-side image-container" :style="test">
       <img
           alt="login-image"
           src="../assets/img/login-logo.svg"
@@ -42,7 +42,11 @@ export default defineComponent({
   data() {
     return {
       email: null,
-      password: null
+      password: null,
+      image: require('../assets/img/login-background-image.png'),
+      test: {
+        backgroundImage: `url(${require('../assets/img/login-background-image.png')})`,
+      }
     }
   },
   methods: {
