@@ -6,6 +6,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'AppLayoutDefault'
+  name: 'AppLayoutDefault',
+  emits: ['logout', 'onLogout'],
 })
 </script>

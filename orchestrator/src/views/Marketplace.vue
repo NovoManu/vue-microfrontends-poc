@@ -1,28 +1,29 @@
 <template>
-  <div :id="id"></div>
+  <div :id="id" />
+  <div v-if="isLoaded === false">Marketplace is not available at the moment. Try later.</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { mount } from 'marketplace/MarketplaceApp'
+import { marketplace } from '../modules'
 
 export default defineComponent({
   name: 'Marketplace',
   data() {
     return {
-      id: 'marketplace'
+      id: 'marketplace',
+      isLoaded: null
     }
   },
-  mounted() {
+  emits: ['logout', 'onLogout'],
+  async mounted() {
     try {
-      mount(`#${this.id}`)
+      (await marketplace.bootstrap())(`#${this.id}`)
+      this.isLoaded = true
     } catch (e) {
       console.log(e)
+      this.isLoaded = false
     }
   }
 })
 </script>
-
-<style lang='scss' scoped>
-
-</style>

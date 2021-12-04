@@ -15,7 +15,8 @@
 
 <script>
 export default {
-  name: "AppLayoutHome"
+  name: "AppLayoutHome",
+  emits: ['logout', 'onLogout'],
 }
 </script>
 

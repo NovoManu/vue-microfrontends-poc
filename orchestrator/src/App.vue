@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppLayout @logout="logout">
-      <router-view @onLogout="onLogout = $event" />
+      <router-view />
     </AppLayout>
   </div>
 </template>
@@ -10,6 +10,7 @@
 import { defineComponent } from 'vue'
 import AppLayout from './layouts/AppLayout.vue'
 import { deleteToken } from './services/localStorageManager'
+import { auth } from './modules'
 
 export default defineComponent({
   name: 'App',
@@ -20,6 +21,10 @@ export default defineComponent({
     return {
       onLogout: () => {}
     }
+  },
+  async mounted() {
+    const { onLogout } = (await auth.bootstrap())(`#${this.id}`, {})
+    this.onLogout = onLogout
   },
   methods: {
     async logout() {

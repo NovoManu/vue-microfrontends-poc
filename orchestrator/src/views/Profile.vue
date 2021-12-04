@@ -1,28 +1,29 @@
 <template>
-  <div :id="id"></div>
+  <div :id="id" />
+  <div v-if="isLoaded === false">Profile is not available at the moment. Try later.</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { mount } from 'profile/ProfileApp'
+import { profile } from '../modules'
 
 export default defineComponent({
   name: 'Profile',
   data() {
     return {
-      id: 'profile'
+      id: 'profile',
+      isLoaded: null
     }
   },
-  mounted() {
+  emits: ['logout', 'onLogout'],
+  async mounted() {
     try {
-      mount(`#${this.id}`)
+      (await profile.bootstrap())(`#${this.id}`)
+      this.isLoaded = true
     } catch (e) {
       console.log(e)
+      this.isLoaded = false
     }
   }
 })
 </script>
-
-<style lang='scss' scoped>
-
-</style>

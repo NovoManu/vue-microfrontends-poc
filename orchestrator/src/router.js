@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { getToken } from './services/localStorageManager'
+import Auth from './views/Auth'
 
 const middlewares = {
   auth(to, from, next) {
@@ -25,7 +26,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('./views/Auth'),
+    component: Auth,
     beforeEnter: middlewares.redirectToHome,
     meta: {
       layout: 'AppLayoutDefault'
@@ -34,7 +35,7 @@ const routes = [
   {
     path: '/signup',
     name: 'signup',
-    component: () => import('./views/Auth'),
+    component: Auth,
     beforeEnter: middlewares.redirectToHome,
     meta: {
       layout: 'AppLayoutDefault'

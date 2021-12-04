@@ -11,7 +11,6 @@ const prodConfig = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'orchestrator',
-      remotes: {},
     }),
   ],
 }

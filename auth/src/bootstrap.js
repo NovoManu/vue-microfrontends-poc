@@ -22,6 +22,7 @@ export const mount = (el, { onLogin, defaultRouter, syncParentRouter }) => {
     }
   }
 }
+console.log('auth bootstrap')
 
 if (process.env.NODE_ENV === 'development') {
   const devRoot = document.querySelector('#_auth-root')
