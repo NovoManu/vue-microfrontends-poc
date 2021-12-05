@@ -25,69 +25,6 @@ export const loadModule = async (url, namespace, module) => {
   }
 }
 
-const urls = {
-  auth: {
-    dev: 'http://localhost:8081/',
-    prod: ''
-  },
-  marketplace: {
-    dev: 'http://localhost:8082/',
-    prod: ''
-  },
-  profile: {
-    dev: 'http://localhost:8083/',
-    prod: ''
-  }
-}
-
-const environment = process.env.NODE_ENV === 'development' ? 'dev' : 'prod'
-
-const index = {
-  auth: {
-    bootstrap: async () => {
-      const module = 'auth'
-      if (index[module].mount) return index[module].mount
-      const { mount } = await loadModule(
-        `${urls[module][environment]}remoteEntry.js`,
-        module,
-        './AuthApp'
-      )
-      index[module].mount = mount
-      return mount
-    },
-    mount: null
-  },
-  marketplace: {
-    bootstrap: async () => {
-      const module = 'marketplace'
-      if (index[module].mount) return index[module].mount
-      const { mount } = await loadModule(
-        `${urls[module][environment]}remoteEntry.js`,
-        module,
-        './MarketplaceApp'
-      )
-      index[module].mount = mount
-      return mount
-    },
-    mount: null
-  },
-  profile: {
-    bootstrap: async () => {
-      const module = 'profile'
-      if (index[module].mount) return index[module].mount
-      const { mount } = await loadModule(
-        `${urls[module][environment]}remoteEntry.js`,
-        module,
-        './ProfileApp'
-      )
-      index[module].mount = mount
-      return mount
-    },
-    mount: null
-  }
-}
-
 export { auth } from './auth'
 export { marketplace } from './marketplace'
 export { profile } from './profile'
-export default index

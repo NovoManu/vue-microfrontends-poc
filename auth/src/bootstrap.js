@@ -9,9 +9,11 @@ export const mount = (el, { onLogin, defaultRouter, syncParentRouter }) => {
     syncParentRouter
   }
   const router = defaultRouter || memoryHistoryRouter
-  const app = createApp(App, props)
-  app.use(router)
-  app.mount(el)
+  if (el) {
+    const app = createApp(App, props)
+    app.use(router)
+    app.mount(el)
+  }
 
   return {
     syncChildRouter(route) {
