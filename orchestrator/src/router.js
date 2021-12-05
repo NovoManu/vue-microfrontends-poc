@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { getToken } from './services/localStorageManager'
+import { getToken } from './services/cookieStorageManager'
 import Auth from './views/Auth'
 
 const middlewares = {

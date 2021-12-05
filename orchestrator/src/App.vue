@@ -9,7 +9,7 @@
 <script>
 import { defineComponent } from 'vue'
 import AppLayout from './layouts/AppLayout.vue'
-import { setToken, getToken, deleteToken } from './services/localStorageManager'
+import { setToken, getToken, deleteToken } from './services/cookieStorageManager'
 import { auth } from './modules'
 import { getMe } from './services/api'
 

@@ -1,10 +1,11 @@
 import { getToken } from './cookieStorageManager'
 
-const BASE_URL = 'https://sennder-sennder.stg.sennder.com'
+const BASE_URL = 'https://api.dev.cloud.sennder.com/marketplace/api'
 
 const getHeaders = () => ({
   'Content-Type': 'application/json',
-  'authorization': `Token ${getToken()}`
+  'authorization': `Token ${getToken()}`,
+  'authorization-host': 'https://sennder-sennder.stg.sennder.com',
 })
 
 function handleErrors(response) {
@@ -16,8 +17,8 @@ function handleErrors(response) {
   return response
 }
 
-export const getMe = () => {
-  return fetch(`${BASE_URL}/accounts/users/me`, {
+export const getOrders = () => {
+  return fetch(`${BASE_URL}/marketplace/orders?saved_lanes=false`, {
     method: 'GET',
     headers: getHeaders(),
   })

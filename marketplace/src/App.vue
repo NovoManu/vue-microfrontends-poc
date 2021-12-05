@@ -18,9 +18,20 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { getOrders } from '../services/api'
 
 export default defineComponent({
-  name: 'MarketplaceApp'
+  name: 'MarketplaceApp',
+  data() {
+    return {
+      orders: [],
+    }
+  },
+  mounted() {
+    getOrders().then(res => {
+      console.log(res)
+    })
+  }
 })
 </script>
 
