@@ -15,14 +15,35 @@ export default defineComponent({
       isLoaded: null
     }
   },
+  props: {
+    sharedData: {
+      type: Object,
+      required: true,
+    }
+  },
   emits: ['logout', 'onLogout'],
-  async mounted() {
-    try {
-      (await profile.bootstrap())(`#${this.id}`)
-      this.isLoaded = true
-    } catch (e) {
-      console.log(e)
-      this.isLoaded = false
+  mounted() {
+    this.$watch(
+      'sharedData',
+      (data) => {
+        if (data.me) this.mountApp(data)
+      },
+      {
+        deep: true,
+        immediate: true,
+      }
+    )
+  },
+  methods: {
+    async mountApp(sharedData) {
+      this.isLoaded = null
+      try {
+        (await profile.bootstrap())(`#${this.id}`, { sharedData })
+        this.isLoaded = true
+      } catch (e) {
+        console.log(e)
+        this.isLoaded = false
+      }
     }
   }
 })

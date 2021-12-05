@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppLayout @logout="logout">
-      <router-view :on-login="onLogin" />
+      <router-view :on-login="onLogin" :shared-data="sharedData" />
     </AppLayout>
   </div>
 </template>
@@ -25,22 +25,31 @@ export default defineComponent({
     }
   },
   computed: {
-
+    isLoggedIn() {
+      return getToken()
+    },
+    sharedData() {
+      return {
+        me: this.me
+      }
+    }
   },
   async created() {
     const { onLogout } = (await auth.bootstrap())(null, {})
     this.onLogout = onLogout
     // Note: get init data
-    if (getToken()) {
+    if (this.isLoggedIn) {
       await this.onLogin()
     }
   },
   methods: {
     onLogin(key = null) {
       if (key) setToken(key)
-      this.me = getMe()
-        .then(() => {
-          this.$router.push('/')
+      getMe()
+        .then(me => {
+          this.me = me
+          // Note: should redirect to route before login
+          if (key) this.$router.push('/')
         })
         .catch(e => {
           if (e.code === 401) {
