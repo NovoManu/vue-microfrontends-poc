@@ -7,6 +7,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'AppLayoutDefault',
-  emits: ['logout', 'onLogout'],
+  emits: ['logout', 'onLogout', 'onLogin', 'sharedData'],
 })
 </script>

@@ -15,7 +15,7 @@ export default defineComponent({
       isLoaded: null
     }
   },
-  emits: ['logout', 'onLogout'],
+  emits: ['logout', 'onLogout', 'onLogin', 'sharedData'],
   async mounted() {
     try {
       (await marketplace.bootstrap())(`#${this.id}`)

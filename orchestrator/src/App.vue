@@ -24,6 +24,7 @@ export default defineComponent({
       me: null
     }
   },
+  emits: ['logout', 'onLogout', 'onLogin', 'sharedData'],
   computed: {
     isLoggedIn() {
       return getToken()

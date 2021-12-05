@@ -21,7 +21,7 @@ export default defineComponent({
       required: true,
     }
   },
-  emits: ['logout', 'onLogout'],
+  emits: ['logout', 'onLogout', 'onLogin', 'sharedData'],
   mounted() {
     this.$watch(
       'sharedData',

@@ -16,7 +16,7 @@
 <script>
 export default {
   name: "AppLayoutHome",
-  emits: ['logout', 'onLogout'],
+  emits: ['logout', 'onLogout', 'onLogin', 'sharedData'],
 }
 </script>
 
@@ -86,7 +86,7 @@ export default {
 }
 .content {
   width: 100%;
-  padding: 1rem 0 0 4rem;
+  padding: 0 0 0 4rem;
 }
 .router-link-active {
   background-color: #e3e9ef;

@@ -13,6 +13,6 @@ if (process.env.NODE_ENV === 'development') {
   const el = document.querySelector('#_profile-root')
 
   if (el) {
-    mount(el, { sharedData: { me: { name: 'John' }}})
+    mount(el, { sharedData: { me: { first_name: 'John' }}})
   }
 }

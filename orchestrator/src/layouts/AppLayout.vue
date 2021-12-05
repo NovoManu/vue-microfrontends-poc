@@ -10,7 +10,7 @@ import { shallowRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
 export default {
   name: 'AppLayout',
-  emits: ['logout'],
+  emits: ['logout', 'onLogout', 'onLogin', 'sharedData'],
   setup () {
     const layout = shallowRef(AppLayoutDefault)
     const route = useRoute()
