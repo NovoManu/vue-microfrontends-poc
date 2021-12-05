@@ -3,7 +3,7 @@
   <div v-if="isLoaded === false">Profile is not available at the moment. Try later.</div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import { profile } from '../modules'
 

@@ -2,7 +2,7 @@
   <div :id="id" />
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import { auth } from '../modules'
 

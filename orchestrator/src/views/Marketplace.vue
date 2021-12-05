@@ -3,7 +3,7 @@
   <div v-if="isLoaded === false">Marketplace is not available at the moment. Try later.</div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import { marketplace } from '../modules'
 

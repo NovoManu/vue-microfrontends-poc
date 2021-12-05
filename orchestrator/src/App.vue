@@ -1,12 +1,12 @@
 <template>
   <div>
     <AppLayout @logout="logout">
-      <router-view :on-login="onLogin"/>
+      <router-view :on-login="onLogin" />
     </AppLayout>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import AppLayout from './layouts/AppLayout.vue'
 import { setToken, getToken, deleteToken } from './services/localStorageManager'
@@ -23,6 +23,9 @@ export default defineComponent({
       onLogout: () => {},
       me: null
     }
+  },
+  computed: {
+
   },
   async created() {
     const { onLogout } = (await auth.bootstrap())(null, {})
