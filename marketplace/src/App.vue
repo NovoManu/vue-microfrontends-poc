@@ -3,14 +3,22 @@
   <table class="table">
     <thead>
     <tr>
-      <th>Loading</th>
-      <th>Unloading</th>
+      <th>ID</th>
+      <th>State</th>
+      <th>Vehicle Type</th>
+      <th>Created</th>
+      <th>Delivery Start</th>
+      <th>Delivery End</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th>load</th>
-      <th>unloading</th>
+    <tr v-for="order in orders" :key="order.id">
+      <th>{{ order.id }}</th>
+      <th>{{ order.state }}</th>
+      <th>{{ order.vehicleType }}</th>
+      <th>{{ order.created }}</th>
+      <th>{{ order.deliveryStart }}</th>
+      <th>{{ order.deliveryEnd }}</th>
     </tr>
     </tbody>
   </table>
@@ -30,6 +38,14 @@ export default defineComponent({
   mounted() {
     getOrders().then(res => {
       console.log(res)
+      this.orders = res.marketplace_orders.slice(0, 20).map(({ order }) => ({
+        state: order.state,
+        vehicleType: order.vehicle_type,
+        id: order.id,
+        created: order.created,
+        deliveryStart: order.delivery_start,
+        deliveryEnd: order.delivery_end
+      }))
     })
   }
 })
