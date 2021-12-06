@@ -1,4 +1,5 @@
 import { getToken } from './cookieStorageManager'
+import idb from './idb'
 
 const BASE_URL = 'https://api.dev.cloud.sennder.com/marketplace/api'
 
@@ -17,14 +18,19 @@ function handleErrors(response) {
   return response
 }
 
-export const getOrders = () => {
-  return fetch(`${BASE_URL}/marketplace/orders?saved_lanes=false`, {
-    method: 'GET',
-    headers: getHeaders(),
-  })
-    .then(handleErrors)
-    .then(res => res.json())
-    .catch(e => {
-      throw e
+export const getOrders = async () => {
+  try {
+    let orders = await idb.orders.get('saved_lanes=false')
+    if (orders) return orders
+    const response = await fetch(`${BASE_URL}/marketplace/orders?saved_lanes=false`, {
+      method: 'GET',
+      headers: getHeaders(),
     })
+    await handleErrors(response)
+    orders = await response.json()
+    await idb.orders.set('saved_lanes=false', orders)
+    return orders
+  } catch (e) {
+    throw e
+  }
 }

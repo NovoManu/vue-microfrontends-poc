@@ -37,7 +37,6 @@ export default defineComponent({
   },
   mounted() {
     getOrders().then(res => {
-      console.log(res)
       this.orders = res.marketplace_orders.slice(0, 20).map(({ order }) => ({
         state: order.state,
         vehicleType: order.vehicle_type,
@@ -46,6 +45,8 @@ export default defineComponent({
         deliveryStart: order.delivery_start,
         deliveryEnd: order.delivery_end
       }))
+    }).catch(e => {
+      console.log(e)
     })
   }
 })
