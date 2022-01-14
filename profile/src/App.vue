@@ -8,10 +8,12 @@
     </tr>
     </tbody>
   </table>
+  <div style="height: 300px; width: 300px; padding-left: 500px; outline: #363636" id="_marketplace"></div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import { mount } from 'marketplace/MarketplaceApp'
 
 export default defineComponent({
   name: 'ProfileApp',
@@ -21,6 +23,9 @@ export default defineComponent({
       default: () => ({})
     }
   },
+  mounted() {
+    mount('#_marketplace')
+  }
 })
 </script>
 

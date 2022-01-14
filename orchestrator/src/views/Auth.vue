@@ -10,6 +10,7 @@ export default defineComponent({
   name: 'Auth',
   data() {
     return {
+      // Todo: create hash to prevent identical ids
       id: 'auth',
     }
   },

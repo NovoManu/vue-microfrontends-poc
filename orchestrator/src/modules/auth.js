@@ -1,6 +1,6 @@
 import { loadModule } from './index'
 
-const namespace = 'auth'
+const namespace = 'test'
 const module = './AuthApp'
 
 const urls = {

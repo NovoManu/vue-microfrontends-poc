@@ -17,6 +17,7 @@ const middlewares = {
   }
 }
 
+// Todo: move routes per view
 const routes = [
   {
     path: '/',

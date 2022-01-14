@@ -24,6 +24,9 @@ const devConfig = {
       exposes: {
         './ProfileApp': './src/bootstrap',
       },
+      remotes: {
+        marketplace: 'marketplace@http://localhost:8082/remoteEntry.js',
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
