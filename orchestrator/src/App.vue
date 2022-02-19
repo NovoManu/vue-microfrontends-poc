@@ -12,6 +12,7 @@ import AppLayout from './layouts/AppLayout.vue'
 import { setToken, getToken, deleteToken } from './services/cookieStorageManager'
 import { auth } from './modules'
 import { getMe } from './services/api'
+import EventBus from './services/EventBus'
 
 export default defineComponent({
   name: 'App',
@@ -31,7 +32,8 @@ export default defineComponent({
     },
     sharedData() {
       return {
-        me: this.me
+        me: this.me,
+        eventBus: EventBus
       }
     }
   },
