@@ -5,7 +5,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { marketplace, profile } from '../modules'
+import { marketplace } from '../modules'
 
 export default defineComponent({
   name: 'Marketplace',
@@ -44,13 +44,6 @@ export default defineComponent({
         console.log(e)
         this.isLoaded = false
       }
-      // try {
-      //   (await profile.bootstrap())(`#${this.id}`, { sharedData })
-      //   this.isLoaded = true
-      // } catch (e) {
-      //   console.log(e)
-      //   this.isLoaded = false
-      // }
     }
   }
 })

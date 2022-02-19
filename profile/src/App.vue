@@ -8,6 +8,7 @@
     </tr>
     </tbody>
   </table>
+  <button @click="sendEvent">Send event</button>
   <div style="height: 300px; width: 300px; padding-left: 500px; outline: #363636" id="_marketplace"></div>
 </template>
 
@@ -25,6 +26,11 @@ export default defineComponent({
   },
   mounted() {
     mount('#_marketplace')
+  },
+  methods: {
+    sendEvent() {
+      this.sharedData.eventBus.emit('test-event', 'Hello from Profile')
+    }
   }
 })
 </script>
