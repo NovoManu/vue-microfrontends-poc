@@ -30,12 +30,21 @@ import { getOrders } from '../services/api'
 
 export default defineComponent({
   name: 'MarketplaceApp',
+  props: {
+    sharedData: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       orders: [],
     }
   },
   mounted() {
+    this.sharedData.eventBus.on('test-event', message => {
+      console.log(message)
+    })
     getOrders().then(res => {
       this.orders = res.marketplace_orders.slice(0, 20).map(({ order }) => ({
         state: order.state,

@@ -9,6 +9,12 @@ import { marketplace } from '../modules'
 
 export default defineComponent({
   name: 'Marketplace',
+    props: {
+    sharedData: {
+      type: Object,
+      required: true,
+    }
+  },
   data() {
     return {
       id: 'marketplace',
@@ -16,13 +22,28 @@ export default defineComponent({
     }
   },
   emits: ['logout', 'onLogout', 'onLogin', 'sharedData'],
-  async mounted() {
-    try {
-      (await marketplace.bootstrap())(`#${this.id}`)
-      this.isLoaded = true
-    } catch (e) {
-      console.log(e)
-      this.isLoaded = false
+  mounted() {
+    this.$watch(
+      'sharedData',
+      (data) => {
+        if (data.me) this.mountApp(data)
+      },
+      {
+        deep: true,
+        immediate: true,
+      }
+    )
+  },
+  methods: {
+    async mountApp(sharedData) {
+      this.isLoaded = null
+      try {
+        (await marketplace.bootstrap())(`#${this.id}`, { sharedData })
+        this.isLoaded = true
+      } catch (e) {
+        console.log(e)
+        this.isLoaded = false
+      }
     }
   }
 })

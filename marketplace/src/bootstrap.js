@@ -1,8 +1,11 @@
 import { createApp } from 'vue'
 import App from './App'
 
-export const mount = (el) => {
-  const app = createApp(App)
+export const mount = (el, { sharedData }) => {
+  const props = {
+    sharedData
+  }
+  const app = createApp(App, props)
   app.mount(el)
   console.log('marketplace bootstrap')
 }
