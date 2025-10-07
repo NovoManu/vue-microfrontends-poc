@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  orchestrator:
+    build:
+      context: ./orchestrator
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./orchestrator:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - microfrontends-network
+    depends_on:
+      - auth
+      - marketplace
+      - profile
+
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./auth:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - microfrontends-network
+
+  marketplace:
+    build:
+      context: ./marketplace
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./marketplace:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - microfrontends-network
+
+  profile:
+    build:
+      context: ./profile
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./profile:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - microfrontends-network
+    depends_on:
+      - marketplace
+
+networks:
+  microfrontends-network:
+    driver: bridge
