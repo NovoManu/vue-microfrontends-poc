@@ -7,7 +7,7 @@ Node.js >=16
 
 ```
 cd orchestrator
-npm install
+npm ci 
 npm start
 ```
 
@@ -17,7 +17,7 @@ This is the whole application and will start on `localhost:8080`. Credentials is
 
 ```
 cd orchestrator
-npm install
+npm ci 
 npm start
 ```
 
@@ -28,7 +28,7 @@ This is Auth microfrontend and will start on `localhost:8081`
 
 ```
 cd orchestrator
-npm install
+npm ci 
 npm start
 ```
 
@@ -38,7 +38,7 @@ This is Marketplace microfrontend and will start on `localhost:8082`
 
 ```
 cd orchestrator
-npm install
+npm ci 
 npm start
 ```
 
