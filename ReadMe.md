@@ -1,4 +1,4 @@
-# The Orcas TMS microfrontends POC
+# The microfrontends POC
 
 ## Prerequisites
 
@@ -52,3 +52,9 @@ npm start
 ```
 
 This is Profile microfrontend and will start on `localhost:8083`
+
+## Login to the system
+
+Use the following:
+email: eve.holt@reqres.in
+pass: cityslicka

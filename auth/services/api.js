@@ -19,7 +19,38 @@ export const login = async ({ email, password }) => {
 }
 
 export const logout = async () => {
-  // reqres.in doesn't have a logout endpoint, so we'll just return true
-  // In a real app, you might clear local storage or call a logout API
-  return true
+  try {
+    await fetch(`${BASE_URL}/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': 'reqres-free-v1'
+      },
+      body: JSON.stringify({})
+    })
+  } catch (error) {
+    throw new Error(error.message || 'Logout failed')
+  }
+}
+
+export const register = async ({ email, password }) => {
+  const username = email.split('@')[0]
+  try {
+  const res = await fetch(`${BASE_URL}/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-API-Key': 'reqres-free-v1'
+    },
+    body: JSON.stringify({ username, email, password })
+  })
+  const data = await res.json()
+
+  if (!res.ok) {
+    throw new Error(data.error || 'Register failed')
+    }
+  return data.token
+  } catch (error) {
+    throw new Error(error.message || 'Register failed')
+  }
 }
