@@ -83,11 +83,52 @@ export default defineComponent({
   },
   async mounted() {
     this.sharedData.eventBus.on("test-event", (message) => {
-      console.log(message);
+      this.showNotification(message + " but this is the Posts App");
     });
     await this.fetchPosts();
   },
   methods: {
+    showNotification(message) {
+      // Create notification element
+      const notification = document.createElement("div");
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #3b82f6;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-size: 14px;
+        max-width: 300px;
+        word-wrap: break-word;
+        z-index: 10000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+      `;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      // Animate in
+      requestAnimationFrame(() => {
+        notification.style.opacity = "1";
+        notification.style.transform = "translateX(0)";
+      });
+
+      // Auto-remove after 3 seconds
+      setTimeout(() => {
+        notification.style.opacity = "0";
+        notification.style.transform = "translateX(100%)";
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }, 3000);
+    },
     async fetchPosts() {
       this.loading = true;
       try {
