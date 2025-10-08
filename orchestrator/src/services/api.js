@@ -1,7 +1,5 @@
 import { getToken } from './cookieStorageManager'
 
-const BASE_URL = 'https://sennder-sennder.stg.sennder.com'
-
 const getHeaders = () => ({
   'Content-Type': 'application/json',
   'authorization': `Token ${getToken()}`
@@ -17,13 +15,16 @@ function handleErrors(response) {
 }
 
 export const getMe = () => {
-  return fetch(`${BASE_URL}/accounts/users/me`, {
-    method: 'GET',
-    headers: getHeaders(),
+  // Return fake user data instead of making API call
+  return Promise.resolve({
+    id: 1,
+    email: 'eve.holt@reqres.in',
+    first_name: 'Eve',
+    last_name: 'Holt',
+    avatar: 'https://reqres.in/img/faces/4-image.jpg',
+    role: 'admin',
+    company: 'Vue Microfrontends POC',
+    created_at: '2024-01-01T00:00:00Z',
+    updated_at: '2024-01-01T00:00:00Z'
   })
-    .then(handleErrors)
-    .then(res => res.json())
-    .catch(e => {
-      throw e
-    })
 }
