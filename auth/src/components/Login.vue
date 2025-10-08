@@ -6,11 +6,6 @@
           src="../assets/img/login-background-image.png"
           class="login-background"
       >
-      <img
-          alt="login-image"
-          src="../assets/img/login-logo.svg"
-          class="login-logo"
-      >
     </div>
     <div class="split right-side form-container">
       <div class="login-form">
@@ -98,11 +93,6 @@ export default defineComponent({
   top: 0;
   left: 0;
   z-index: 1;
-}
-.login-logo {
-  padding: 2rem;
-  position: relative;
-  z-index: 2;
 }
 .right-side {
   right: 0;

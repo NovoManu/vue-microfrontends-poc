@@ -4,7 +4,7 @@
     <tbody>
     <tr>
       <th>{{ sharedData.me.first_name }} {{ sharedData.me.last_name }}</th>
-      <th>ustenko.mi@gmail.com</th>
+      <th>{{ sharedData.me.email }}</th>
     </tr>
     </tbody>
   </table>

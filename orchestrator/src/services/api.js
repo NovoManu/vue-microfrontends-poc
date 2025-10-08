@@ -5,22 +5,13 @@ const getHeaders = () => ({
   'authorization': `Token ${getToken()}`
 })
 
-function handleErrors(response) {
-  const Exception = function (code, message) {
-    this.code = code
-    this.message = message
-  }
-  if (!response.ok) throw new Exception(response.status, response.statusText)
-  return response
-}
-
 export const getMe = () => {
   // Return fake user data instead of making API call
   return Promise.resolve({
     id: 1,
     email: 'eve.holt@reqres.in',
-    first_name: 'Eve',
-    last_name: 'Holt',
+    first_name: 'Manu',
+    last_name: 'Dev',
     avatar: 'https://reqres.in/img/faces/4-image.jpg',
     role: 'admin',
     company: 'Vue Microfrontends POC',
