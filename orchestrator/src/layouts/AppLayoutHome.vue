@@ -4,8 +4,8 @@
       <button class="button" @click="$emit('logout')">Logout</button>
     </header>
     <div class="sidebar">
-      <router-link to="/marketplace" class="sidebar-item">M</router-link>
-      <router-link to="profile" class="sidebar-item">P</router-link>
+      <router-link to="/marketplace" class="sidebar-item">Posts</router-link>
+      <router-link to="profile" class="sidebar-item">Users</router-link>
     </div>
     <div class="content">
       <slot />

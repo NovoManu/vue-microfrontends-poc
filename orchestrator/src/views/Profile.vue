@@ -41,8 +41,9 @@ export default defineComponent({
         (await profile.bootstrap())(`#${this.id}`, { sharedData })
         this.isLoaded = true
       } catch (e) {
+        // Todo: investigate why it loads twice
         console.log(e)
-        this.isLoaded = false
+        // this.isLoaded = false
       }
     }
   }

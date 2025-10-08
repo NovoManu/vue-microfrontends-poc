@@ -1,6 +1,6 @@
 import { CookieStorage } from 'cookie-storage'
 
-const tokenKey = 'Orcas Token'
+const tokenKey = 'Microfrontends Token'
 
 const cookieStorage = new CookieStorage()
 
